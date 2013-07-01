@@ -1,0 +1,38 @@
+$gu-deepblue: rgb(0,74,131);
+$gu-lightblue: rgb(152,188,219);
+
+$link: $gu-deepblue;
+
+@mixin border-box {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@mixin clearfix {
+	&:after {
+		content: '';
+        display: table;
+        clear: both;
+	}
+}
+
+@mixin transition($args) {
+	-webkit-transition: $args;
+}
+
+@mixin no-select {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+@mixin no-drag {
+	-webkit-user-drag: none;
+	-moz-user-drag: none;
+	-ms-user-drag: none;
+	-o-user-drag: none;
+	user-drag: none;
+}

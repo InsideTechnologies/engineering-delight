@@ -1,0 +1,13 @@
+.demo {
+	float: right;
+}
+
+figure {
+	float: left;
+	text-align: center;
+}
+
+figure img {
+	width: 12em;
+	height: 12em;
+}

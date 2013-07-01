@@ -1,0 +1,40 @@
+.previous-example {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	padding: 0 0 0 0;
+
+	@include border-box;
+}
+
+.previous-example-source {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+
+	padding: 0.5em;
+
+	@include border-box;
+
+	p {
+		margin: 0;
+		font-size: 0.8em;
+	}
+}
+
+.previous-example-container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding: 0.5em 0.5em 2.5em 0.5em;
+	@include border-box;
+
+	iframe {
+		width: 100%;
+		height: 100%;
+		border: 1px solid #eee;
+		box-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+	}
+}

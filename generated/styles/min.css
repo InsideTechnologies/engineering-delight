@@ -1,0 +1,349 @@
+@font-face {
+  font-family: 'Voltaire';
+  src: url("../files/fonts/Voltaire.eot");
+  src: url("../files/fonts/Voltaire.eot?#iefix") format("embedded-opentype"), url("../files/fonts/Voltaire.woff") format("woff"), url("../files/fonts/Voltaire.ttf") format("truetype"), url("../files/fonts/Voltaire.svg#webfont") format("svg"); }
+
+@font-face {
+  font-family: 'Poiret One';
+  src: url("../files/fonts/PoiretOne.eot");
+  src: url("../files/fonts/PoiretOne.eot?#iefix") format("embedded-opentype"), url("../files/fonts/PoiretOne.woff") format("woff"), url("../files/fonts/PoiretOne.ttf") format("truetype"), url("../files/fonts/PoiretOne.svg#webfont") format("svg"); }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url("../files/fonts/GuardianTitlepieceWeb-Regular.eot");
+  src: url("../files/fonts/GuardianTitlepieceWeb-Regular.eot?#iefix") format("embedded-opentype"), url("../files/fonts/GuardianTitlepieceWeb-Regular.woff") format("woff"), url("../files/fonts/GuardianTitlepieceWeb-Regular.ttf") format("truetype"), url("../files/fonts/GuardianTitlepieceWeb-Regular.svg#Guardian Titlepiece Web") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: 'Guardian Titlepiece Web';
+  src: url("../files/fonts/GuardianTitlepieceWeb-Regular.eot");
+  src: url("../files/fonts/GuardianTitlepieceWeb-Regular.eot?#iefix") format("embedded-opentype"), url("../files/fonts/GuardianTitlepieceWeb-Regular.woff") format("woff"), url("../files/fonts/GuardianTitlepieceWeb-Regular.ttf") format("truetype"), url("../files/fonts/GuardianTitlepieceWeb-Regular.svg#Guardian Titlepiece Web") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: 'Guardian Sans Web';
+  src: url("../files/fonts/Guardian Sans Web-Light.eot");
+  src: url("../files/fonts/Guardian Sans Web-Light.eot?#iefix") format("embedded-opentype"), url("../files/fonts/Guardian Sans Web-Light.woff") format("woff"), url("../files/fonts/Guardian Sans Web-Light.ttf") format("truetype"), url("../files/fonts/Guardian Sans Web-Light.svg#Guardian Sans Web") format("svg");
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: 'Guardian Sans Web';
+  src: url("../files/fonts/Guardian Sans Web-Regular.eot");
+  src: url("../files/fonts/Guardian Sans Web-Regular.eot?#iefix") format("embedded-opentype"), url("../files/fonts/Guardian Sans Web-Regular.woff") format("woff"), url("../files/fonts/Guardian Sans Web-Regular.ttf") format("truetype"), url("../files/fonts/Guardian Sans Web-Regular.svg#Guardian Sans Web") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003108}}
+.footer {
+  position: absolute;
+  width: 100%;
+  height: 3em;
+  bottom: 0;
+  left: 0;
+  padding: 1em;
+  background-color: #f4f4f4;
+  border-top: 2px solid #004a83;
+  text-align: right;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003121}}
+.logo, .logo-the, .logo-guardian {
+  font-family: 'Guardian Titlepiece Web'; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003125}}
+.logo-the {
+  color: #98bcdb; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003130}}
+.logo-guardian {
+  color: #004a83; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003136}}
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003144}}
+body {
+  font-family: 'Guardian Sans Web', 'sans-serif';
+  font-size: 20px;
+  font-weight: 300;
+  color: #353535;
+  padding: 0 0 3em 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003154}}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Guardian Sans Web';
+  font-weight: 400;
+  margin: 1.5em 0 0.5em 0;
+  line-height: 1.2; }
+@media -sass-debug-info{filename{}line{font-family:\00003160}}
+  h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+    margin-top: 0.5em; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003165}}
+p {
+  margin: 0.5em 0;
+  line-height: 1.5; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003170}}
+a {
+  color: #004a83;
+  text-decoration: none;
+  font-weight: 400; }
+@media -sass-debug-info{filename{}line{font-family:\00003175}}
+  a:hover {
+    text-decoration: underline; }
+@media -sass-debug-info{filename{}line{font-family:\00003179}}
+  a:visited {
+    color: #004a83; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003183}}
+body {
+  font-size: 16px; }
+  @media (min-width: 32em) {
+@media -sass-debug-info{filename{}line{font-family:\00003183}}
+    body {
+      font-size: 17px; } }
+  @media (min-width: 40em) {
+@media -sass-debug-info{filename{}line{font-family:\00003183}}
+    body {
+      font-size: 18px; } }
+  @media (min-width: 48em) {
+@media -sass-debug-info{filename{}line{font-family:\00003183}}
+    body {
+      font-size: 19px; } }
+  @media (min-width: 56em) {
+@media -sass-debug-info{filename{}line{font-family:\00003183}}
+    body {
+      font-size: 20px; } }
+  @media (min-width: 64em) {
+@media -sass-debug-info{filename{}line{font-family:\00003183}}
+    body {
+      font-size: 21px; } }
+  @media (min-width: 72em) {
+@media -sass-debug-info{filename{}line{font-family:\00003183}}
+    body {
+      font-size: 22px; } }
+
+@media -sass-debug-info{filename{}line{font-family:\00003210}}
+.column2 {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  float: left;
+  padding: 0 0.5em 0 0.5em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003222}}
+.column2-header {
+  position: absolute;
+  width: 100%;
+  height: 2em;
+  top: 0; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003229}}
+.column2-header a {
+  font-size: 0.8em; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003232}}
+.column3 {
+  position: relative;
+  width: 33.333%;
+  height: 100%;
+  float: left;
+  padding: 0 0.5em 0 0.5em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003244}}
+.column3-header {
+  position: absolute;
+  width: 100%;
+  height: 2em;
+  top: 0; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003251}}
+.column3-header a {
+  font-size: 0.8em; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003254}}
+.columns-outer {
+  position: relative;
+  margin: 0 -0.5em;
+  padding: 0 1em 0 0;
+  width: 100%;
+  height: 100%; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003262}}
+.columns-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003270}}
+.column-withheader {
+  padding-top: 2em; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003275}}
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003284}}
+.content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 1em 2em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003294}}
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6em;
+  padding: 2em 2em 0 2em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+@media -sass-debug-info{filename{}line{font-family:\00003304}}
+  .header h1 {
+    margin: 0;
+    padding: 0 0 0.1em 0;
+    border-bottom: 1px solid #eee; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003310}}
+.image {
+  width: 100%;
+  height: 100%;
+  background: no-repeat 50% 50%;
+  background-size: cover; }
+@media -sass-debug-info{filename{}line{font-family:\00003316}}
+  .image.contain {
+    background-size: contain; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003320}}
+.previous-example {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 0 0 0 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003331}}
+.previous-example-source {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0.5em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+@media -sass-debug-info{filename{}line{font-family:\00003340}}
+  .previous-example-source p {
+    margin: 0;
+    font-size: 0.8em; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003346}}
+.previous-example-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0.5em 0.5em 2.5em 0.5em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+@media -sass-debug-info{filename{}line{font-family:\00003353}}
+  .previous-example-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #eee;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); }
+
+@media -sass-debug-info{filename{}line{font-family:\00003360}}
+blockquote {
+  border-left: 4px solid #ddd;
+  margin: 0 0 0 0.5em;
+  padding: 0 0 0 1em; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003366}}
+blockquote p {
+  margin-top: 0; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003370}}
+cite {
+  font-style: normal; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003374}}
+.author {
+  font-size: 0.8em;
+  margin-bottom: 0; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003378}}
+.top-half, .bottom-half {
+  width: 100%;
+  height: 50%; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003384}}
+.slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 5em 0 0 0;
+  background-color: white;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003395}}
+.invisible {
+  opacity: 0;
+  -webkit-transition: opacity 0.1s;
+  -moz-transition: opacity 0.1s;
+  -ms-transition: opacity 0.1s;
+  -o-transition: opacity 0.1s;
+  transition: opacity 0.1s; }
+
+@media -sass-debug-info{filename{}line{font-family:\00003405}}
+.visible {
+  opacity: 1;
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -ms-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  transition: opacity 1s; }

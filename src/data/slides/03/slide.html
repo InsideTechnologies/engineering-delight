@@ -1,0 +1,31 @@
+<div class='header' intro='fade' outro='fade'>
+	<h1>What does this have to with data visualisation?</h1>
+</div>
+
+<div class='content'>
+	<svg viewBox='0 0 1600 900'>
+		
+		<!-- data visualisation -->
+		{{#( stage >= 1 )}}
+		<g intro='fade' outro='fade'>
+			<circle cx='{{dataviz.cx}}' cy='450' r='400' fill='rgba(0,128,0,0.5)'/>
+			<text x='350' y='450'>dataviz</text>
+		</g>
+		{{/()}}
+		
+		<!-- interactives -->
+		{{#( stage >= 2 )}}
+		<g intro='fade' outro='fade'>
+			<circle cx='{{interactives.cx}}' cy='450' r='400' fill='rgba(201,83,0,0.5)'/>
+			<text x='1250' y='450'>interactives</text>
+		</g>
+		{{/()}}
+
+		{{#( stage >= 3 )}}
+		<g intro='fade' outro='fade'>
+			<text x='800' y='420'>interactive</text>
+			<text x='800' y='480'>dataviz</text>
+		</g>
+		{{/()}}
+	</svg>
+</div>

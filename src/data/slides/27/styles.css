@@ -1,0 +1,39 @@
+svg {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+circle {
+	stroke: black;
+	stroke-width: 1;
+	fill: #aaa;
+}
+
+text {
+	text-anchor: middle;
+	font-size: 1.4em;
+	pointer-events: none;
+}
+
+line {
+	stroke: black;
+	pointer-events: none;
+}
+
+.code {
+	font-family: 'Source Sans Pro', monospace;
+	text-anchor: start;
+}
+
+.home {
+	font-weight: bold;
+	fill: red;
+}
+
+.prime {
+	font-weight: bold;
+	fill: blue;
+}

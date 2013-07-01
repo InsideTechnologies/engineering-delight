@@ -1,0 +1,23 @@
+<div class='header' intro='fade' outro='fade'>
+	<h1>Understanding</h1>
+</div>
+
+<div class='content'>
+	<div class='container'>
+		<div class='top' intro='fade' outro='fade'>
+			<p>The best visualisations are self-explanatory.</p>
+		</div>
+
+		{{#( stage >= 1 )}}
+		<div class='middle' intro='fade' outro='fade'>
+			<div class='image contain' style='background-image: url(files/images/radar.gif);'></div>
+		</div>
+		{{/()}}
+
+		{{#( stage >= 2 )}}
+		<div class='bottom' intro='fade' outro='fade'>
+			<p>Prefer familiar chart types, <em>in general</em>.</p>
+		</div>
+		{{/()}}
+	</div>
+</div>
