@@ -14,7 +14,11 @@ define([ 'domReady', 'Statesman', 'data', 'controllers/controller' ], function (
 	domReady( function () {
 		app.el = document.getElementById( 'container' );
 
-		controller( app );
+		if ( /chrome/i.test( navigator.userAgent ) ) {
+			controller( app );
+		} else {
+			app.el.innerHTML = "<p class='browser-warning'>This presentation requires browser features that only currently exist in <a href='http://google.com/chrome'>Chrome</a>. Sorry.</p>";
+		}
 	});
 
 
