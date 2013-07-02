@@ -1,4 +1,4 @@
-/*! Ractive - v0.3.0 - 2013-06-30
+/*! Ractive - v0.3.0 - 2013-07-01
 * Faster, easier, better interactive web development
 
 * http://rich-harris.github.com/Ractive/
@@ -806,7 +806,7 @@ proto.link = function ( keypath ) {
 				try {
 					this.callback.call( this.context, value, this.value );
 				} catch ( err ) {
-					if ( root.debug ) {
+					if ( this.root.debug ) {
 						throw err;
 					}
 				}

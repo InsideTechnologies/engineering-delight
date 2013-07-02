@@ -4,16 +4,19 @@
 
 <!-- TODO - add some examples (the billion-dollar-o-gram?) -->
 
-<div class='content'>
+<div class='content' intro='fade' outro='fade'>
 	<div class='columns-outer'>
 		<div class='columns-inner'>
-			<div class='column2'>
+			{{#( stage >= 1 )}}
+			<div class='column2' intro='fly' outro='fade'>
 				<div class='image contain' style='background-image: url(files/images/information-is-beautiful.jpg);'></div>
 			</div>
+			{{/()}}
 
-			<div class='column2'>
+			{{#( stage >= 2 )}}
+			<div class='column2' intro='fade'>
 				<blockquote>
-					<img src='https://si0.twimg.com/profile_images/83855034/me_avatar2.jpg' style='float: right; margin: 0 0 1em 1em; width: 90px; height: 107px;'>
+					<img src='https://si0.twimg.com/profile_images/83855034/me_avatar2.jpg' style='float: right; margin: 0 0 1em 1em; width: 90px; height: 107px; border: 1px solid #ddd;'>
 
 					<p intro='typewriter:2000'>I usually do some hand-drawn sketches. Then I move onto screen work, creating images by hand in Adobe Illustrator CS4. It’s an amazingly powerful drawing package.</p>
 
@@ -25,6 +28,7 @@
 					</p>
 				</blockquote>
 			</div>
+			{{/()}}
 		</div>
 	</div>
 </div>

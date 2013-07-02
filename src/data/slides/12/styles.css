@@ -19,13 +19,12 @@
 	height: 100%;
 }
 
-.latin {
-	font-family: Georgia;
-	font-weight: normal;
-	font-style: italic;
-}
+.visible {
+	opacity: 1;
 
-iframe {
-	width: 100%;
-	height: 100%;
+	-webkit-transition: opacity 0.2s;
+	-moz-transition: opacity 0.2s;
+	-ms-transition: opacity 0.2s;
+	-o-transition: opacity 0.2s;
+	transition: opacity 0.2s;
 }

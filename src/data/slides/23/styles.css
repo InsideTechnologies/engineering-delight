@@ -1,7 +1,28 @@
-.question {
+.container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 0.5em;
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.caption {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	bottom: 1em;
 	text-align: center;
 }
 
-.question p {
-	font-size: 3em;
+.caption p {
+	background-color: rgba(0,0,0,0.8);
+	color: white;
+	padding: 0.2em 1em;
+	display: inline-block;
+	font-size: 2em;
 }

@@ -1,0 +1,217 @@
+<div class='header' intro='fade' outro='fade'>
+	<h1>The quadratic Bézier curve</h1>
+</div>
+
+<div class='content'>
+	<svg id='svg' viewBox='100 0 800 500'>
+
+
+		<defs>
+			<marker id='arrow-end' viewBox='0 0 14 14' refX='7' refY='7' markerUnits='strokeWidth' markerWidth='12' markerHeight='9' orient='auto'>
+				<path outro='fade' d='M 2 2 L 12 7 L 2 12 z' fill='black'/>
+			</marker>
+
+			<marker id='arrow-start' viewBox='0 0 14 14' refX='7' refY='7' markerUnits='strokeWidth' markerWidth='12' markerHeight='9' orient='auto'>
+				<path intro='fade' outro='fade' d='M 12 2 L 2 7 L 12 12 z' fill='black'/>
+			</marker>
+		</defs>
+
+
+		{{#showGuideVectors}}
+			<!-- vector AQ -->
+			<line intro='fade' outro='fade' class='guide-vector' x1='{{A.x}}' y1='{{A.y}}' x2='{{Q.x}}' y2='{{Q.y}}'/>
+
+			<!-- vector QB -->
+			<line intro='fade' outro='fade' class='guide-vector' x1='{{Q.x}}' y1='{{Q.y}}' x2='{{B.x}}' y2='{{B.y}}'/>
+		{{/showGuideVectors}}
+
+		<!-- vector t(AQ)t(QB) -->
+		{{#showIntermediateVectors}}
+			<line
+				intro='fade' outro='fade'
+				class='guide-vector'
+				x1='{{ tAQ.x }}'
+				y1='{{ tAQ.y }}'
+				x2='{{ tQB.x }}'
+				y2='{{ tQB.y }}'
+			/>
+		{{/showIntermediateVectors}}
+
+
+		<!-- direction of travel hint -->
+		{{#showTrajectoryHint}}
+			<g intro='fade' outro='fade'>
+				<polygon class='trajectory-hint' points='{{tAQ.x}},{{tAQ.y}} {{tQB.x}},{{tAQ.y}} {{tQB.x}},{{tQB.y}}'/>
+
+				<!-- x -->
+				<text x='{{( ( tAQ.x + tQB.x ) / 2 )}}' y='{{( tAQ.y + ( tQB.y > tAQ.y ? -20 : 20 ) )}}'>x</text>
+
+				<!-- y -->
+				<text x='{{( tQB.x + 20 )}}' y='{{( ( tAQ.y + tQB.y ) / 2 )}}'>y</text>
+			</g>
+		{{/showTrajectoryHint}}
+
+
+		<!-- curve AQB -->
+		{{#showGuideCurve}}
+			<path intro='fade' outro='fade' class='guide-curve' d='M{{A.x}},{{A.y}} Q{{Q.x}},{{Q.y}} {{B.x}},{{B.y}}'/>
+		{{/showGuideCurve}}
+
+
+		<!-- vector At(AQ) -->
+		{{#showIntermediateVectors}}
+			<line intro='fade' outro='fade' class='intermediate-vector' x1='{{A.x}}' y1='{{A.y}}' x2='{{ tAQ.x }}' y2='{{ tAQ.y }}' />
+
+			<!-- vector t(AQ)t(t(AQ)t(QB)) -->
+			<line
+				intro='fade' outro='fade'
+				class='intermediate-vector'
+				x1='{{ tAQ.x }}'
+				y1='{{ tAQ.y }}'
+				x2='{{ Z.x }}'
+				y2='{{ Z.y }}'
+			/>
+		{{/showIntermediateVectors}}
+
+
+
+		<!-- curve At(AQ)Z -->
+		{{#showIntermediateCurve}}
+			<path intro='fade' outro='fade' class='main-curve' d='M{{A.x}},{{A.y}} Q{{tAQ.x}},{{tAQ.y}} {{Z.x}},{{Z.y}}'/>
+		{{/showIntermediateCurve}}
+		
+
+		
+		<!-- point A -->
+		<g transform='translate({{A.x}},{{A.y}})'>
+			{{#showNodes}}<circle intro='fade' outro='fade' class='node' r='10' proxy-mousedown='drag:A'/>{{/showNodes}}
+			{{#showLabels}}<text intro='fade' outro='fade' y='40'>A</text>{{/showLabels}}
+		</g>
+
+		<!-- point B -->
+		<g transform='translate({{B.x}},{{B.y}})'>
+			{{#showNodes}}<circle intro='fade' outro='fade' class='node' r='10' proxy-mousedown='drag:B'/>{{/showNodes}}
+			{{#showLabels}}<text intro='fade' outro='fade' y='40'>B</text>{{/showLabels}}
+		</g>
+
+		<!-- point Q -->
+		<g transform='translate({{Q.x}},{{Q.y}})'>
+			{{#showNodes}}<circle intro='fade' outro='fade' class='node' r='10' proxy-mousedown='drag:Q'/>{{/showNodes}}
+			{{#showLabels}}<text intro='fade' outro='fade' y='-40'>Q</text>{{/showLabels}}
+		</g>
+
+
+
+		{{#showIntermediatePoints}}
+			<!-- point t(AQ) -->
+			<g intro='fade' outro='fade' transform='translate({{ tAQ.x }},{{ tAQ.y }})'>
+				<circle class='intermediate-node' r='5'/>
+				{{#showLabels}}<text intro='fade' outro='fade' x='-20' style='text-anchor: end;'>t(AQ)</text>{{/showLabels}}
+			</g>
+
+
+			<!-- point t(QB) -->
+			<g intro='fade' outro='fade' transform='translate({{ tQB.x }},{{ tQB.y }})'>
+				<circle class='intermediate-node' r='5'/>
+				{{#showLabels}}<text intro='fade' outro='fade' x='20' style='text-anchor: start;'>t(QB)</text>{{/showLabels}}
+			</g>
+
+			<!-- point t(t(AQ)t(QB)) -->
+			<g intro='fade' outro='fade' transform='translate({{ Z.x }},{{ Z.y }})'>
+				<circle class='intermediate-node' r='5'/>
+			</g>
+		{{/showIntermediatePoints}}
+
+
+
+
+
+
+
+		<!-- direction of travel -->
+		{{#showTrajectory}}
+		<line
+			intro='fade' outro='fade'
+			class='trajectory'
+			x1='{{Z.x}}' y1='{{Z.y}}'
+			x2='{{( Z.x + ( exaggeration * direction.x ) )}}'
+			y2='{{( Z.y + ( exaggeration * direction.y ) )}}'
+		/>
+		{{/showTrajectory}}
+
+
+
+		<!-- arrowhead center -->
+		{{#showArrowheadBase}}
+			<circle intro='fade' outro='fade' fill='red' r='5' cx='{{arrowhead.center.x}}' cy='{{arrowhead.center.y}}'/>
+		{{/showArrowheadBase}}
+
+		{{#showCrossbars}}
+			<line
+				intro='fade' outro='fade'
+				class='cross'
+				x1='{{arrowhead.po.x}}' y1='{{arrowhead.po.y}}'
+				x2='{{arrowhead.so.x}}' y2='{{arrowhead.so.y}}'
+			/>
+
+
+			<!-- midpoint -->
+			<line
+				intro='fade' outro='fade'
+				class='cross'
+				x1='{{approximation_midpoint_port.x}}' y1='{{approximation_midpoint_port.y}}'
+				x2='{{approximation_midpoint_starboard.x}}' y2='{{approximation_midpoint_starboard.y}}'
+			/>
+
+			<circle intro='fade' outro='fade' fill='red' r='5' cx='{{midpoint_Z.x}}' cy='{{midpoint_Z.y}}'/>
+		{{/showCrossbars}}
+
+
+		{{#showApproximationOutline}}
+			<path intro='fade' outro='fade' class='approximation-outline' d='M{{A.x}},{{A.y}} Q{{approximation_midpoint_port.x}},{{approximation_midpoint_port.y}} {{arrowhead.pi.x}},{{arrowhead.pi.y}} L{{arrowhead.po.x}},{{arrowhead.po.y}} {{Z.x}},{{Z.y}} {{arrowhead.so.x}},{{arrowhead.so.y}} {{arrowhead.si.x}},{{arrowhead.si.y}} Q{{approximation_midpoint_starboard.x}},{{approximation_midpoint_starboard.y}} {{A.x}},{{A.y}} Z'/>
+		{{/showApproximationOutline}}
+
+		{{#showApproximation}}
+			<path intro='fade' outro='fade' class='approximation' d='M{{A.x}},{{A.y}} Q{{approximation_midpoint_port.x}},{{approximation_midpoint_port.y}} {{arrowhead.pi.x}},{{arrowhead.pi.y}} L{{arrowhead.po.x}},{{arrowhead.po.y}} {{Z.x}},{{Z.y}} {{arrowhead.so.x}},{{arrowhead.so.y}} {{arrowhead.si.x}},{{arrowhead.si.y}} Q{{approximation_midpoint_starboard.x}},{{approximation_midpoint_starboard.y}} {{A.x}},{{A.y}} Z'/>
+		{{/showApproximation}}
+
+		{{#showResultOutline}}
+			<path intro='fade' outro='fade' class='result-outline' d='M{{A.x}},{{A.y}} Q{{midpoint_port.x}},{{midpoint_port.y}} {{arrowhead.pi.x}},{{arrowhead.pi.y}} L{{arrowhead.po.x}},{{arrowhead.po.y}} {{Z.x}},{{Z.y}} {{arrowhead.so.x}},{{arrowhead.so.y}} {{arrowhead.si.x}},{{arrowhead.si.y}} Q{{midpoint_starboard.x}},{{midpoint_starboard.y}} {{A.x}},{{A.y}} Z'/>
+		{{/showResultOutline}}
+
+		{{#showResult}}
+			<path intro='fade' outro='fade' class='result' d='M{{A.x}},{{A.y}} Q{{midpoint_port.x}},{{midpoint_port.y}} {{arrowhead.pi.x}},{{arrowhead.pi.y}} L{{arrowhead.po.x}},{{arrowhead.po.y}} {{Z.x}},{{Z.y}} {{arrowhead.so.x}},{{arrowhead.so.y}} {{arrowhead.si.x}},{{arrowhead.si.y}} Q{{midpoint_starboard.x}},{{midpoint_starboard.y}} {{A.x}},{{A.y}} Z'/>
+		{{/showResult}}
+
+	</svg>
+
+	<div class='sidebar-controls-outer'>
+		<div class='sidebar-controls-inner'>
+			<h3>Show</h3>
+
+			<label><input type='checkbox' checked='{{showNodes}}'> nodes</label>
+			<label><input type='checkbox' checked='{{showLabels}}'> labels</label>
+			<label><input type='checkbox' checked='{{showGuideVectors}}'> guide vectors</label>
+			<label><input type='checkbox' checked='{{showGuideCurve}}'> guide curve</label>
+			<label><input type='checkbox' checked='{{showIntermediatePoints}}'> intermediate points</label>
+			<label><input type='checkbox' checked='{{showIntermediateVectors}}'> intermediate vectors</label>
+			<label><input type='checkbox' checked='{{showIntermediateCurve}}'> intermediate curve</label>
+			<label><input type='checkbox' checked='{{showTrajectory}}'> trajectory</label>
+			<label><input type='checkbox' checked='{{showTrajectoryHint}}'> trajectory hint</label>
+			<label><input type='checkbox' checked='{{showArrowheadBase}}'> arrowhead base</label>
+			<label><input type='checkbox' checked='{{showCrossbars}}'> cross bars</label>
+			<!--<label><input type='checkbox' checked='{{showApproximationOutline}}'> approximation outline</label>-->
+			<label><input type='checkbox' checked='{{showApproximation}}'> approximation</label>
+			<!--<label><input type='checkbox' checked='{{showResultOutline}}'> result outline</label>-->
+			<label><input type='checkbox' checked='{{showResult}}'> result</label>
+
+			<h3>Thickness</h3>
+			<input type='range' min='1' max='70' step='0.1' value='{{thickness}}'>
+			<label><input type='checkbox' checked='{{varyThickness}}'> vary with time</label>
+		</div>
+	</div>
+
+	<div class='controls'>
+		<label class='slider'><input type='range' value='{{t}}' min='0' max='1' step='0.001'/> <span>t = {{( t.toFixed( 2 ) )}}</span></label>
+	</div>
+</div>

@@ -278,8 +278,10 @@ function () {
 			}
 		},
 
+		// stage 9 - doctor who quote
 		null,
 
+		// stage 10 - not einstein
 		null
 	];
 }

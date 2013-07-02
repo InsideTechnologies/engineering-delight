@@ -1,23 +1,18 @@
 <div class='header' intro='fade' outro='fade'>
-	<h1>Understanding</h1>
+	<h1>Interactivity increases cognitive load</h1>
 </div>
 
-<div class='content'>
+<div class='content' intro='fade' outro='fade'>
 	<div class='container'>
-		<div class='top' intro='fade' outro='fade'>
-			<p>The best visualisations are self-explanatory.</p>
+		<div class='top'>
+			<p>We now have two things to worry about &ndash; the visualisation, and the <strong>user interface</strong> or UI.</p>
 		</div>
 
-		{{#( stage >= 1 )}}
-		<div class='middle' intro='fade' outro='fade'>
-			<div class='image contain' style='background-image: url(files/images/radar.gif);'></div>
+		<div class='middle'>
+			<!-- http://cars.about.com/od/buick/ig/2010-Buick-LaCrosse-photos/2010-Buick-LaCrosse-controls.htm -->
+			<div class='image {{( stage >= 1 ? "visible" : "invisible" )}}' style='background-image: url(http://0.tqn.com/d/cars/1/0/e/u/1/ag_10lacrosse_buttons.jpg);'>
+			<div class='caption'><p>Bad UI design costs lives!</p></div>
+			</div>
 		</div>
-		{{/()}}
-
-		{{#( stage >= 2 )}}
-		<div class='bottom' intro='fade' outro='fade'>
-			<p>Prefer familiar chart types, <em>in general</em>.</p>
-		</div>
-		{{/()}}
 	</div>
 </div>

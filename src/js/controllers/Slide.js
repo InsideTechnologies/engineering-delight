@@ -26,7 +26,7 @@ define( [ 'Ractive' ], function ( Ractive ) {
 					this.stages = fn( this );
 					this.numStages = this.stages.length;
 				} catch ( err ) {
-					console.error( err );
+					console.error( err.message || err );
 				}
 			}
 		}

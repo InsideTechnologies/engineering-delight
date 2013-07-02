@@ -1,6 +1,6 @@
 function () {
 
-	var home, targets, newTargets, thickTargets, viewBox;
+	var home, targets, newTargets, thinTargets, thickTargets, viewBox;
 
 	home = {
 		x: 450,
@@ -18,8 +18,16 @@ function () {
 		{ id: 'F', x: 200, y: 250, w: 2 }
 	];
 
+	thinTargets = {
+		'targets.0.w': 2,
+		'targets.1.w': 2,
+		'targets.2.w': 2,
+		'targets.3.w': 2,
+		'targets.4.w': 2
+	};
+
 	thickTargets = {
-		'targets.0.w': 3,
+		'targets.0.w': 3.5,
 		'targets.1.w': 7,
 		'targets.2.w': 1,
 		'targets.3.w': 6,
@@ -28,23 +36,24 @@ function () {
 
 	return [
 
+		// stage 0 - setup
 		function () {
 			return {
 				do: function ( ractive ) {
-					viewBox = window.viewBox = new ViewBox( ractive.nodes.svg );
+					viewBox = new ViewBox( ractive.nodes.svg );
 
 					ractive.set({
 						home: home,
 						targets: targets,
-						outward: true
+						outward: true,
+						m: 0,
+						showHints: true
 					});
 
 					ractive.on( 'drag', function ( event ) {
 						var move, cancel, keypath;
 
 						keypath = event.keypath || 'home';
-
-						console.log( 'keypath', keypath );
 
 						move = function ( event ) {
 							var svgCoords = viewBox.getCoordsFromClient( event.clientX, event.clientY );
@@ -61,26 +70,56 @@ function () {
 						window.addEventListener( 'mousemove', move );
 						window.addEventListener( 'mouseup', cancel );
 					});
+				},
+				undo: function () {
+					// noop
 				}
 			}
 		},
 
-		// stage 1 - show crap chart
+		// stage 1 - show additional targets
 		function () {
 			return {
 				do: function ( ractive ) {
 					targets.push.apply( targets, newTargets );
+				},
+				undo: function ( ractive ) {
+					targets.splice( 1 );
 				}
 			}
 		},
 
-		// stage 1 - show crap chart
+		// stage 2 - show variable width lines
 		function () {
 			return {
 				do: function ( ractive ) {
 					ractive.animate( thickTargets );
+				},
+				redo: function ( ractive ) {
+					ractive.set( thickTargets );
+				},
+				undo: function ( ractive ) {
+					ractive.animate( thinTargets );
 				}
 			}
-		}
+		},
+
+		// stage 3 - show Watkins quote
+		null,
+
+		// stage 4 - show curves
+		null,
+
+		// stage 5 - show arrowheads
+		null,
+
+		// stage 6 - show moved arrowheads
+		null,
+
+		// stage 7 - show moved arrowheads with hidden target circles
+		null,
+
+		// stage 8 - show inward arrowheads
+		null
 	];
 }

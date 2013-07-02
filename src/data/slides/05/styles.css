@@ -1,0 +1,11 @@
+.image-container {
+	float: right;
+	text-align: right;
+	padding-right: 2em;
+}
+
+img {
+	width: 18em;
+	margin: 0 0 1em 1em;
+	display: block;
+}

@@ -1,4 +1,4 @@
-/*! Statesman - v0.2.0 - 2013-06-28
+/*! Statesman - v0.2.0 - 2013-07-01
 * The JavaScript state management library
 
 * 
@@ -838,7 +838,7 @@ propagateChange = function ( statesman, keypath, directOnly ) {
 	if ( map ) {
 		i = map.length;
 		while ( i-- ) {
-			propagateChange( map[i] );
+			propagateChange( statesman, map[i] );
 		}
 	}
 };

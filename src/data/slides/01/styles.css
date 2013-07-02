@@ -6,6 +6,8 @@
 	left: 0;
 	background: url(files/images/team.jpg) no-repeat 50% 50%;
 	background-size: cover;
+
+	-webkit-animation: alternate 60s infinite grow ease-in-out;
 }
 
 .caption {
@@ -36,4 +38,14 @@
 .caption p {
 	clear: both;
 	background-color: rgba(0,0,0,0.7);
+}
+
+@-webkit-keyframes grow {
+	from {
+		-webkit-transform: scale(1);
+	}
+
+	to {
+		-webkit-transform: scale(1.2);
+	}
 }

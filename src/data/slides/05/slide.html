@@ -2,22 +2,29 @@
 	<h1>The effect of emotion on learning</h1>
 </div>
 
-<div class='content'>
+<div class='content' intro='fade' outro='fade'>
 	<p>A large body of research indicates that <strong>emotion</strong> enhances our ability to <strong>absorb and retain information</strong>.</p>
 	
 	{{#( stage >= 1 )}}
 	<p intro='fade'>This is because</p>
 
-	<ul intro='fade'>
-		<li>the more engaged we are, the easier it becomes to filter out distractions</li>
+	<div class='image-container' intro='fade'>
+		<img src='files/images/homer.jpg'>
+		<a href='http://www.oneposter.com/product/149622/cant-talk-eating-homer-simpson'>oneposter.com</a>
+	</div>
+
+	<ul>
+		<li intro='fade'>the more engaged we are, the easier it becomes to filter out distractions</li>
 
 		{{#( stage >= 2 )}}
-		<li>different physiological mechanisms come into play</li>
+		<li intro='fade'>different physiological mechanisms come into play</li>
 		{{/()}}
 
 		{{#( stage >= 3 )}}
-		<li>we continue to think about enjoyable experiences after they've finished</li>
+		<li intro='fade'>we continue to think about enjoyable experiences after they've finished</li>
 		{{/()}}
 	</ul>
 	{{/()}}
+
+
 </div>
