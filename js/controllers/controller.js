@@ -4,12 +4,20 @@ define( [ './router', './Slide' ], function ( router, Slide ) {
 	
 	'use strict';
 
-	var createNewSlide, LEFT_ARROW, UP_ARROW, RIGHT_ARROW, DOWN_ARROW;
+	var createNewSlide, LEFT_ARROW, UP_ARROW, RIGHT_ARROW, DOWN_ARROW, loadImages;
 
 	LEFT_ARROW = 37;
 	UP_ARROW = 38;
 	RIGHT_ARROW = 39;
 	DOWN_ARROW = 40;
+
+	loadImages = function ( images ) {
+		var i = images.length;
+		while ( i-- ) {
+			console.log( 'preloading "%s"', images[i] );
+			new Image().src = images[i];
+		}
+	};
 	
 	createNewSlide = function ( app, slideData, slideNum, backOne ) {
 		var slide, data;
@@ -21,6 +29,16 @@ define( [ './router', './Slide' ], function ( router, Slide ) {
 			slide.enter( backOne );
 
 			app.currentSlide = slide;
+
+			// load images up front
+			if ( data.images ) {
+				loadImages( data.images );
+			}
+		}
+
+		// preload images for next slide
+		if ( slideData[ slideNum + 1 ] && slideData[ slideNum + 1 ].images ) {
+			loadImages( slideData[ slideNum + 1 ].images );
 		}
 	};
 
