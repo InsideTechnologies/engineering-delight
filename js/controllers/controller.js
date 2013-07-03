@@ -14,7 +14,6 @@ define( [ './router', './Slide' ], function ( router, Slide ) {
 	loadImages = function ( images ) {
 		var i = images.length;
 		while ( i-- ) {
-			console.log( 'preloading "%s"', images[i] );
 			new Image().src = images[i];
 		}
 	};
