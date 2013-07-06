@@ -1,17 +1,23 @@
-<div class='header'>
-	<h1>Aliveness</h1>
+<div class='header' intro='fade' outro='fade'>
+	<h1>Avoid <span class='strikeout'>introducing unnecessary</span> complexity</h1>
 </div>
 
 <div class='content'>
 	<div class='container'>
 		<div class='top' intro='fade' outro='fade'>
-			<p>The word <strong>animation</strong> comes from the Latin <strong class='latin'>animō</strong> &ndash; to give life.</p>
+			<p>The best visualisations are self-explanatory.</p>
 		</div>
 
-		<div class='middle'>
-			<div id='video_container' class='container {{( stage >= 1 ? "visible" : "invisible" )}}'>
-				<iframe src="//www.youtube.com/embed/HiqbNxRurFA?start=19" frameborder="0" allowfullscreen></iframe>
-			</div>
+		{{#( stage >= 1 )}}
+		<div class='middle' intro='fade' outro='fade'>
+			<div class='image contain' style='background-image: url(files/images/radar.gif);'></div>
 		</div>
+		{{/()}}
+
+		{{#( stage >= 2 )}}
+		<div class='bottom' intro='fade' outro='fade'>
+			<p>Prefer familiar chart types, <em>in general</em>.</p>
+		</div>
+		{{/()}}
 	</div>
 </div>

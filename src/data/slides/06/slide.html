@@ -1,34 +1,32 @@
-<div class='header' intro='fade' outro='fade'>
-	<h1>Beauty</h1>
-</div>
+{{#( stage >= 4 )}}
+	<div class='background-image' style='background-image:url(files/images/hunting.jpg);' intro='fade' outro='fade'></div>
+	<div class='credit'>
+		<a href='http://www.freemages.co.uk/browse/photo-964-cave-painting-warriors.html'>Image: Jean-Pierre Malavialle</a>
+	</div>
+{{/()}}
 
-<!-- TODO - add some examples (the billion-dollar-o-gram?) -->
+{{#( stage < 4 )}}
+<div class='header' intro='fade' outro='fade'>
+	<h1>The effect of emotion on learning</h1>
+</div>
 
 <div class='content' intro='fade' outro='fade'>
-	<div class='columns-outer'>
-		<div class='columns-inner'>
-			{{#( stage >= 1 )}}
-			<div class='column2' intro='fly' outro='fade'>
-				<div class='image contain' style='background-image: url(files/images/information-is-beautiful.jpg);'></div>
-			</div>
-			{{/()}}
+	<p><strong>Emotion</strong> enhances our ability to <strong>absorb and retain information</strong>.</p>
+	
+	{{#( stage >= 1 )}}
+	<ul>
+		<li intro='fade'>the more engaged we are, the easier it becomes to filter out distractions</li>
 
-			{{#( stage >= 2 )}}
-			<div class='column2' intro='fade'>
-				<blockquote>
-					<img src='https://si0.twimg.com/profile_images/83855034/me_avatar2.jpg' style='float: right; margin: 0 0 1em 1em; width: 90px; height: 107px; border: 1px solid #ddd;'>
+		{{#( stage >= 2 )}}
+		<li intro='fade'>different physiological mechanisms come into play</li>
+		{{/()}}
 
-					<p intro='typewriter:2000'>I usually do some hand-drawn sketches. Then I move onto screen work, creating images by hand in Adobe Illustrator CS4. It’s an amazingly powerful drawing package.</p>
+		{{#( stage >= 3 )}}
+		<li intro='fade'>we continue to think about enjoyable experiences after they've finished</li>
+		{{/()}}
+	</ul>
+	{{/()}}
 
-					<p intro='typewriter:{"delay":2000,"duration":2000}'>Data visualization wise, it can output a few basic graphs, but otherwise, it doesn’t render data. That means, yes, I have to hand position every data point on every single image I create. And, yup, I am that anal.</p>
 
-					<p class='author'>
-						<cite><a href='http://www.los-list.com/blog/bookworm-david-mccandless/'>Lo's List interview</a></cite>
-						&ndash; David McCandless
-					</p>
-				</blockquote>
-			</div>
-			{{/()}}
-		</div>
-	</div>
 </div>
+{{/()}}

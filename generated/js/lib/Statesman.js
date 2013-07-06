@@ -1,4 +1,4 @@
-/*! Statesman - v0.2.0 - 2013-07-01
+/*! Statesman - v0.2.0 - 2013-07-04
 * The JavaScript state management library
 
 * 
@@ -216,13 +216,17 @@ statesmanProto.add = function ( keypath, d ) {
 
 		i = signature.dependsOn.length;
 		
-		// if we only have one dependency, we can update whenever it changes
-		if ( i === 1 ) {
-			this.selfUpdating = true;
-		}
+		// if this is a cacheable computed, we update proactively
+		if ( this.cache ) {
+			
+			// if we only have one dependency, we can update whenever it changes
+			if ( i === 1 ) {
+				this.selfUpdating = true;
+			}
 
-		while ( i-- ) {
-			this.refs[i] = new Reference( this, signature.dependsOn[i] );
+			while ( i-- ) {
+				this.refs[i] = new Reference( this, signature.dependsOn[i] );
+			}
 		}
 
 		this.setting = true;
@@ -268,13 +272,26 @@ statesmanProto.add = function ( keypath, d ) {
 
 				else {
 					args = [];
-					i = this.refs.length;
-					
-					while ( i-- ) {
-						args[i] = this.refs[i].value;
-					}
 
-					value = this.signature.get.apply( this.context, args );
+					if ( this.cache ) {
+						i = this.refs.length;
+						
+						while ( i-- ) {
+							args[i] = this.refs[i].value;
+						}
+
+						value = this.signature.get.apply( this.context, args );
+					}
+					
+					else {
+						i = this.signature.dependsOn.length;
+						
+						while ( i-- ) {
+							args[i] = this.statesman.get( this.signature.dependsOn[i] );
+						}
+
+						value = this.signature.get.apply( this.context, args );
+					}
 				}
 			}
 

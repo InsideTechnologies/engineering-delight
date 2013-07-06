@@ -1,15 +1,13 @@
-.content {
+.demo {
+	float: right;
+}
+
+figure {
+	float: left;
 	text-align: center;
 }
 
-h1 {
-	display: inline-block;
-	font-size: 3em;
-	margin: 0 0 2em 0;
-	padding: 0 0 0.1em 0;
-	border-bottom: 1px solid #eee;
-}
-
-h2 {
-	margin: 0.5em 0 0 0;
+figure img {
+	width: 12em;
+	height: 12em;
 }

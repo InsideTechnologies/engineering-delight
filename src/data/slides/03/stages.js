@@ -27,11 +27,13 @@ function () {
 				},
 				undo: function ( ractive ) {
 					ractive.animate({
-						'dataviz.cx': 400,
-						'interactives.cx': 1200
+						'dataviz.cx': 390,
+						'interactives.cx': 1210
 					}, { easing: 'easeOut' });
 				}
 			};
-		}
+		},
+
+		null
 	];
 }

@@ -90,11 +90,7 @@ define( [ 'Ractive' ], function ( Ractive ) {
 			var self = this;
 
 			return new Promise( function ( resolver ) {
-				console.log( 'tearing down' );
-				self.ractive.teardown( function () {
-					console.log( 'teardown complete' );
-					resolver.resolve();
-				});
+				self.ractive.teardown( resolver.resolve );
 			});
 		},
 

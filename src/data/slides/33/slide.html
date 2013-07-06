@@ -1,6 +1,49 @@
-<div class='content' intro='fade' outro='fade'>
-	<h1 class='end'>Thank you</h1>
+<div class='header' intro='fade' outro='fade'>
+	<h1>SVG: scalable vector graphics</h1>
+</div>
 
-	<p class='link'>slides: <a href='http://rich-harris.co.uk/engineering-delight'>rich-harris.co.uk/engineering-delight</a></p>
-	<p class='credit'><a href='http://twitter.com/rich_harris'>@rich_harris</a></p>
+<div class='content' intro='fade' outro='fade'>
+	
+
+	<div class='demo'>
+		<figure>
+			<img src='files/images/svg-logo.png'>
+			<figcaption>bitmap</figcaption>
+		</figure>
+
+		<figure>
+			<img src='files/images/svg-logo.svg'>
+			<figcaption>vector</figcaption>
+		</figure>
+	</div>
+
+	<ul outro='fade'>
+		{{#( stage >= 1 )}}
+			<li intro='fade'>Web standard supported pretty much everywhere (even IE!)</li>
+		{{/()}}
+
+		{{#( stage >= 2 )}}
+			<li intro='fade'>It's like HTML for graphics</li>
+		{{/()}}
+
+		{{#( stage >= 3 )}}
+			<li intro='fade'>Easy to create and manipulate &ndash; you don't need libraries</li>
+		{{/()}}
+
+		{{#( stage >= 4 )}}
+			<li intro='fade'>Perfect for interactivity</li>
+		{{/()}}
+
+		{{#( stage >= 5 )}}
+			<li intro='fade'>Adobe Illustrator and the open source <a href='http://inkscape.org/'>Inkscape</a> produce SVG</li>
+		{{/()}}
+
+		{{#( stage >= 6 )}}
+			<li intro='fade'>...but slow as molasses on old devices (e.g. iPad 1)...</li>
+		{{/()}}
+
+		{{#( stage >= 7 )}}
+			<li intro='fade'>...and decent tutorials are scarce. Google is your friend</li>
+		{{/()}}
+	</ul>
 </div>

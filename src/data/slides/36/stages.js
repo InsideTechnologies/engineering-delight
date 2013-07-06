@@ -4,10 +4,22 @@ function () {
 
 	Statesman = require( 'Statesman' );
 
+	// square root helper
+	Statesman.utils.sqrt = function ( num ) {
+		return Math.sqrt( num );
+	};
+
 	state = new Statesman({
 		A: { x: 300, y: 400 },
 		B: { x: 700, y: 400 },
 		Q: { x: 500, y: 100 },
+
+		pythagoras: {
+			origin: {
+				x: 150,
+				y: 200
+			}
+		},
 
 		exaggeration: 50,
 
@@ -108,7 +120,16 @@ function () {
 		'midpoint_starboard.x': '${tAQ.x} + ( 0.5 * ${arrowhead.size} * ${midpoint_normal.x} )',
 		'midpoint_starboard.y': '${tAQ.y} + ( 0.5 * ${arrowhead.size} * ${midpoint_normal.y} )',
 
-		'arrowhead.size': '${varyThickness} ? ( ${t} * ${thickness} ) : ${thickness}'
+		'arrowhead.size': '${varyThickness} ? ( ${t} * ${thickness} ) : ${thickness}',
+
+
+		// pythagoras
+		'pythagoras.a': '${tQB.x} - ${tAQ.x}',
+		'pythagoras.b': '${tQB.y} - ${tAQ.y}',
+		'pythagoras.c': 'utils.sqrt( ( ${pythagoras.a} * ${pythagoras.a} ) + ( ${pythagoras.b} * ${pythagoras.b} ) )',
+
+		'pythagoras.normalised.a': '${pythagoras.a} / ${pythagoras.c}',
+		'pythagoras.normalised.b': '${pythagoras.b} / ${pythagoras.c}'
 	});
 
 	return [
@@ -257,12 +278,26 @@ function () {
 			}
 		},
 
-		// stage 5 - hide trajectory hint, show arrowhead base and crossbars
+		// stage 5 - normalise trajectory hint
+		function () {
+			return {
+				do: function ( ractive ) {
+					ractive.set( 'showNormalised', true );
+				},
+				undo: function ( ractive ) {
+					ractive.set( 'showNormalised', false );
+				}
+			}
+		},
+
+		// stage 6 - hide trajectory hint, show arrowhead base and crossbars
 		function () {
 			return {
 				do: function ( ractive ) {
 					ractive.set({
 						showTrajectoryHint: false,
+						showIntermediateVectors: false,
+						showIntermediatePoints: false,
 						showArrowheadBase: true,
 						showCrossbars: true
 					});
@@ -270,6 +305,8 @@ function () {
 				undo: function ( ractive ) {
 					ractive.set({
 						showTrajectoryHint: true,
+						showIntermediateVectors: true,
+						showIntermediatePoints: true,
 						showArrowheadBase: false,
 						showCrossbars: false
 					});
@@ -277,7 +314,7 @@ function () {
 			}
 		},
 
-		// stage 6 - show approximation
+		// stage 7 - show approximation
 		function () {
 			return {
 				do: function ( ractive ) {

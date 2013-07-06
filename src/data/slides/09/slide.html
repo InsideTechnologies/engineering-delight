@@ -1,18 +1,138 @@
 <div class='header' intro='fade' outro='fade'>
-	<h1>Interactivity increases cognitive load</h1>
+	<h1>Computers do not have good aesthetic judgment</h1>
 </div>
 
-<div class='content' intro='fade' outro='fade'>
-	<div class='container'>
-		<div class='top'>
-			<p>We now have two things to worry about &ndash; the visualisation, and the <strong>user interface</strong> or UI.</p>
-		</div>
+<div class='content'>
+	<svg viewBox='0 0 {{width}} {{height}}' class='{{( stage >= 9 ? "blurred" : "" )}}'>
+		<line class='axis' x1='{{x1}}' y1='{{y2}}' x2='{{x2}}' y2='{{y2}}'/>
 
-		<div class='middle'>
-			<!-- http://cars.about.com/od/buick/ig/2010-Buick-LaCrosse-photos/2010-Buick-LaCrosse-controls.htm -->
-			<div class='image {{( stage >= 1 ? "visible" : "invisible" )}}' style='background-image: url(http://0.tqn.com/d/cars/1/0/e/u/1/ag_10lacrosse_buttons.jpg);'>
-			<div class='caption'><p>Bad UI design costs lives!</p></div>
-			</div>
+		<text class='title' x='{{( x1 + 150 )}}' y='{{( y1 + 20 )}}'>UFO sightings by state, 1995-2010</text>
+		<text class='source' x='{{( x1 + 150 )}}' y='{{( y1 + 50 )}}'>Source: <a xlink:href='http://www.infochimps.com/datasets/60000-documented-ufo-sightings-with-text-descriptions-and-metada'>infochimps.com</a></text>
+		
+
+		<!-- grid lines - only up to stage 6 -->
+		{{#( stage <= 5 )}}
+			<g class='grid-lines' intro='fade' outro='fade'>
+				{{#gridLines}}
+					<g transform='translate(0,{{( y1 + y2 - ( y1 + ( ( (y2 - y1) / ( maxValue - minValue ) ) * ( . - minValue ) ) ) )}})'>
+						<line class='grid-line' x1='{{x1}}' x2='{{x2}}' y1='0' y2='0'/>
+						<text class='grid-label' x='{{( x1 - 10 )}}'>{{( Math.round(.) )}}</text>
+					</g>
+				{{/gridLines}}
+			</g>
+		{{/()}}
+
+		<g class='points'>
+			{{#ufos}}
+				<rect
+					class='point'
+					x='{{( xScale( pos + barMargin ) )}}'
+					y='{{( y1 + y2 - ( y1 + ( ( (y2 - y1) / ( maxValue - minValue ) ) * ( count - minValue ) ) ) )}}'
+					width='{{( ( 1 - 2 * barMargin ) * width / ufos.length )}}'
+					height='{{( ( ( (y2 - y1) / ( maxValue - minValue ) ) * ( count - minValue ) ) )}}'
+					fill='rgb({{( Math.round( r ) )}},{{( Math.round( g ) )}},{{( Math.round( b ) )}})'
+				/>
+			{{/ufos}}
+		</g>
+
+		<!-- stage 0 - state name labels -->
+		{{#( stage === 0 )}}
+			<g intro='fade' outro='fade' transform='translate(0,{{( y2 + 30 )}})'>
+				{{#ufos}}
+					<text x='{{( xScale( pos + 0.5 ) )}}'>{{state_name}}</text>
+				{{/ufos}}
+			</g>
+		{{/()}}
+
+		<!-- stage 1+ - state name labels -->
+		{{#( stage >= 1 )}}
+			<g intro='fade' outro='fade' transform='translate(0,{{( y2 + 30 )}})'>
+				{{#ufos:i}}
+					<text class='label' x='{{( xScale( pos + 0.5 ) )}}'>{{state_id}}</text>
+				{{/ufos}}
+			</g>
+		{{/()}}
+
+
+		<!-- stage 6 - direct labelling -->
+		{{#( stage === 6 )}}
+			<g class='direct-labels' intro='fade' outro='fade'>
+				{{#ufos}}
+					<text
+						class='direct-label'
+						x='{{( xScale( pos + 0.5 ) )}}'
+						y='{{( y1 + y2 - ( y1 + ( ( (y2 - y1) / ( maxValue - minValue ) ) * ( count - minValue ) ) ) - 10 )}}'
+					>
+						{{count}}
+					</text>
+				{{/ufos}}
+			</g>
+		{{/()}}
+
+		<!-- stage 6 - direct labelling inside bar -->
+		{{#( stage >= 7 )}}
+			<g class='direct-labels' intro='fade' outro='fade'>
+				{{#ufos}}
+					{{#( count > threshold )}}
+						<text
+							class='direct-label in-bar'
+							transform='translate({{( xScale( pos + 0.55 ) )}}, {{( y1 + y2 - ( y1 + ( ( (y2 - y1) / ( maxValue - minValue ) ) * ( count - minValue ) ) ) + 5 )}}) rotate(270)'
+						>
+							{{count}}
+						</text>
+					{{/()}}
+
+					{{#( count <= threshold )}}
+						<text
+							class='direct-label out-bar'
+							transform='translate({{( xScale( pos + 0.55 ) )}}, {{( y1 + y2 - ( y1 + ( ( (y2 - y1) / ( maxValue - minValue ) ) * ( count - minValue ) ) ) - 5 )}}) rotate(270)'
+						>
+							{{count}}
+						</text>
+					{{/()}}
+				{{/ufos}}
+			</g>
+
+			<rect x='0' y='-100' width='200' height='100' fill='white' stroke='none'/>
+		{{/()}}
+
+
+	
+	</svg>
+
+	{{#( stage >= 9 )}}
+		<div class='quote-container' intro='fade'>
+			{{#( stage === 9 )}}
+				<div class='centred'>
+					<blockquote intro='fade' outro='fade'>
+						<figure style='width: 8em;'>
+							<img src='http://www.bbc.co.uk/doctorwho/classic/gallery/fourthdoctor/images/340/23.jpg' style='width: 8em; height: 6em;'>
+							<figcaption>Image: BBC</figcaption>
+						</figure>
+
+						<p intro='typewriter'>The trouble with computers, of course, is that they're very sophisticated idiots. They do exactly what you tell them at amazing speed. Even if you order them to kill you.</p>
+
+						<p class='author'>
+							<cite><a href='http://en.wikiquote.org/wiki/Fourth_Doctor'>Doctor Who</a></cite>
+							, 1975
+						</p>
+					</blockquote>
+				</div>
+			{{/()}}
+
+			{{#( stage === 10 )}}
+				<div class='centred'>
+					<blockquote intro='fade' outro='fade'>
+						<p intro='typewriter'>Computers are incredibly fast, accurate and stupid; humans are incredibly slow, inaccurate and brilliant; together they are powerful beyond imagination</p>
+
+						<p class='author'>
+							<cite><a href='http://www.benshoemate.com/2008/11/30/einstein-never-said-that/'>not Einstein</a></cite>
+						</p>
+					</blockquote>
+				</div>
+			{{/()}}
 		</div>
-	</div>
+	{{/()}}
 </div>
+
+<!-- TODO source -->

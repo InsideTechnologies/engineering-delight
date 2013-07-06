@@ -1,0 +1,29 @@
+.image-container {
+	float: right;
+	text-align: right;
+	padding-right: 2em;
+}
+
+img {
+	width: 18em;
+	margin: 0 0 1em 1em;
+	display: block;
+}
+
+.background-image {
+	-webkit-animation: alternate 60s infinite grow ease-in-out;
+}
+
+@-webkit-keyframes grow {
+	from {
+		-webkit-transform: scale(1);
+	}
+
+	to {
+		-webkit-transform: scale(1.4);
+	}
+}
+
+.content p, .content ul {
+	font-size: 1.8em;
+}

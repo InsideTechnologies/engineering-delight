@@ -1,20 +1,13 @@
-.container {
-	padding: 4em 0;
-}
-
-.top {
+.image {
 	position: absolute;
-	top: 0;
-	left: 0;
 }
 
-.bottom {
-	position: absolute;
-	left: 0;
-	bottom: 0;
+.small-copy {
+	font-size: 1.2em;
 }
 
-.middle {
+.centred {
 	width: 100%;
-	height: 100%;
+	padding: 0 0 0 2em;
+	box-sizing: border-box;
 }

@@ -1,13 +1,12 @@
-.demo {
-	float: right;
+.previous-example-container iframe {
+	border: none;
+	box-shadow: none;
 }
 
-figure {
-	float: left;
-	text-align: center;
-}
-
-figure img {
-	width: 12em;
-	height: 12em;
+@media (min-width: 63em) {
+	.previous-example-container iframe {
+		width: 80%;
+		height: 80%;
+		-webkit-transform: translate(-50%,-50%) scale(1.25) translate(50%,50%);
+	}
 }

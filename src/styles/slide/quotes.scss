@@ -1,8 +1,42 @@
+@import "base";
+
+.quote-container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(255,255,255,0.7);
+	padding: 4em 6em;
+	@include border-box;
+}
+
+/* .quote-container  */blockquote {
+	box-shadow: 4px 4px 10px rgba(0,0,0,0.1);
+}
+
 blockquote {
-	border-left: 4px solid #ddd;
+	//font-family: 'Source Sans Pro';
+	//font-family: Inconsolata;
+	border-left: 4px solid #98bcdb;
 	margin: 0 0 0 0.5em;
 	padding: 0.5em 0.5em 0.5em 1em;
 	background-color: #f9f9f9;
+	@include clearfix;
+
+	figure {
+		float: right;
+		margin: 0 0 1em 1em;
+	}
+
+	figure img {
+		width: 100%;
+	}
+
+	figcaption {
+		font-size: 0.8em;
+		text-align: right;
+	}
 }
 
 blockquote p {

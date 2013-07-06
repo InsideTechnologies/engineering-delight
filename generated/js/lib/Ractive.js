@@ -1,4 +1,4 @@
-/*! Ractive - v0.3.0 - 2013-07-01
+/*! Ractive - v0.3.0 - 2013-07-04
 * Faster, easier, better interactive web development
 
 * http://rich-harris.github.com/Ractive/
@@ -1270,11 +1270,9 @@ adaptors.statesman = function ( model, path ) {
 				setView = function ( keypath, value ) {
 					if ( !settingModel ) {
 						settingView = true;
-						if ( typeof keypath === 'object' ) {
-							view.set( keypath );
-						} else {
-							view.set( keypath, value );
-						}
+						
+						view.set( keypath );
+						
 						settingView = false;
 					}
 				};
@@ -1296,12 +1294,11 @@ adaptors.statesman = function ( model, path ) {
 
 					if ( !settingModel ) {
 						settingView = true;
-						if ( typeof keypath === 'object' ) {
-							data = prefix( keypath );
-							view.set( data );
-						} else {
-							view.set( path + keypath, value );
-						}
+						
+						data = prefix( keypath );
+						console.log( 'setting view', data );
+						view.set( data );
+						
 						settingView = false;
 					}
 				};
@@ -2205,70 +2202,125 @@ var parseTransitionParams = function ( params ) {
 
 	return params || {};
 };
-transitions.typewriter = function ( node, complete, params, info, isIntro ) {
+(function ( transitions ) {
 
-	var startTime, duration, style, computedStyle, running, text, length, loop;
+	var typewriter, typewriteNode, typewriteTextNode;
 
-	params = parseTransitionParams( params );
+	typewriteNode = function ( node, complete, interval ) {
+		var children, next, hideData;
 
-	// get original styles
-	text = node.innerText;
-	length = text.length;
+		if ( node.nodeType === 3 ) {
+			typewriteTextNode( node, complete, interval );
+			return;
+		}
 
-	duration = params.duration || ( params.speed ? 1000 * length / params.speed : length * 30 );
+		children = Array.prototype.slice.call( node.childNodes );
 
-	style = node.getAttribute( 'style' );
-	computedStyle = window.getComputedStyle( node );
+		next = function () {
+			if ( !children.length ) {
+				complete();
+				return;
+			}
 
-	node.style.visibility = 'hidden';
+			typewriteNode( children.shift(), next, interval );
+		};
 
-	setTimeout( function () {
-		var computedHeight, computedWidth, computedVisibility;
+		next();
+	};
 
-		computedWidth = computedStyle.width;
-		computedHeight = computedStyle.height;
-		computedVisibility = computedStyle.visibility;
+	typewriteTextNode = function ( node, complete, interval ) {
+		var str, len, loop, i;
 
-		setTimeout( function () {
-			startTime = Date.now();
+		// text node
+		str = node._hiddenData;
+		len = str.length;
 
-			node.style.width = computedWidth;
-			node.style.height = computedHeight;
-			node.style.visibility = 'visible';
-
-			console.log( computedWidth )
-			console.log( computedHeight );
-
-			running = true;
-			loop();
-		}, params.delay || 0 );
-	});
-
-	
-
-	loop = function () {
-		var timeNow, elapsed, t, numChars;
-
-		timeNow = Date.now();
-		elapsed = timeNow - startTime;
-
-		if ( elapsed > duration ) {
-			node.innerText = text;
-			node.setAttribute( 'style', style || '' );
-
-			running = false;
+		if ( !len ) {
 			complete();
 			return;
 		}
 
-		t = elapsed / duration;
-		numChars = Math.round( t * length );
+		i = 0;
 
-		node.innerText = text.substr( 0, numChars );
+		loop = setInterval( function () {
+			var substr, remaining, match, remainingNonWhitespace, filler;
 
-		requestAnimationFrame( loop );
+			substr = str.substr( 0, i );
+			remaining = str.substring( i );
+
+			match = /^\w+/.exec( remaining );
+			remainingNonWhitespace = ( match ? match[0].length : 0 );
+
+			filler = new Array( remainingNonWhitespace + 1 ).join( '\u00a0' );
+			//filler = new Array( remainingNonWhitespace + 1 ).join( '-' );
+			//filler = new Array( remainingNonWhitespace ).join( '\u00a0' ) + 'x';
+
+
+			node.data = substr + filler;
+			if ( i === len ) {
+				clearInterval( loop );
+				delete node._hiddenData;
+				complete();
+			}
+
+			i += 1;
+		}, interval );
 	};
-};
+
+	typewriter = function ( node, complete, params, info, isIntro ) {
+		var interval, style, computedStyle, hideData;
+
+		params = parseTransitionParams( params );
+
+		interval = params.interval || ( params.speed ? 1000 / params.speed : ( params.duration ? node.textContent.length / params.duration : 4 ) );
+		
+		style = node.getAttribute( 'style' );
+		computedStyle = window.getComputedStyle( node );
+
+		node.style.visibility = 'hidden';
+
+		setTimeout( function () {
+			var computedHeight, computedWidth, computedVisibility;
+
+			computedWidth = computedStyle.width;
+			computedHeight = computedStyle.height;
+			computedVisibility = computedStyle.visibility;
+
+			hideData( node );
+
+			setTimeout( function () {
+				node.style.width = computedWidth;
+				node.style.height = computedHeight;
+				node.style.visibility = 'visible';
+
+				typewriteNode( node, function () {
+					node.setAttribute( 'style', style || '' );
+					complete();
+				}, interval );
+			}, params.delay || 0 );
+		});
+
+		hideData = function ( node ) {
+			var children, i;
+
+			if ( node.nodeType === 3 ) {
+				node._hiddenData = '' + node.data;
+				node.data = '';
+				
+				return;
+			}
+
+			children = Array.prototype.slice.call( node.childNodes );
+			i = children.length;
+			while ( i-- ) {
+				hideData( children[i] );
+			}
+		};
+	};
+
+	transitions.typewriter = typewriter;
+
+}( transitions ));
 (function ( Ractive ) {
 
 	var requestFullscreen, cancelFullscreen, fullscreenElement, testDiv;

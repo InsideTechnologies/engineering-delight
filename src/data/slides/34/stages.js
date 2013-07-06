@@ -27,7 +27,7 @@ function () {
 	};
 
 	thickTargets = {
-		'targets.0.w': 3.5,
+		'targets.0.w': 12.5,
 		'targets.1.w': 7,
 		'targets.2.w': 1,
 		'targets.3.w': 6,

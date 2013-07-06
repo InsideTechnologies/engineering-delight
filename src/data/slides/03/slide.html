@@ -9,7 +9,7 @@
 		{{#( stage >= 1 )}}
 		<g intro='fade' outro='fade'>
 			<circle cx='{{dataviz.cx}}' cy='450' r='400' fill='rgba(0,128,0,0.5)'/>
-			<text x='400' y='450'>dataviz</text>
+			<text x='390' y='450'>dataviz</text>
 		</g>
 		{{/()}}
 		
@@ -17,7 +17,7 @@
 		{{#( stage >= 2 )}}
 		<g intro='fade' outro='fade'>
 			<circle cx='{{interactives.cx}}' cy='450' r='400' fill='rgba(201,83,0,0.5)'/>
-			<text x='1200' y='450'>interactives</text>
+			<text x='1210' y='450'>interactives</text>
 		</g>
 		{{/()}}
 
@@ -28,4 +28,22 @@
 		</g>
 		{{/()}}
 	</svg>
+
+	{{#( stage >= 4 )}}
+	<div class='quote-container' intro='fade' outro='fade'>
+		<blockquote>
+			<figure style='width: 8em;'>
+				<img src='http://datadrivenjournalism.net/uploads/MurrayAlan_hedcut_newb.JPG' style='width: 8em; height: 10em;'>
+				<figcaption>Image: Wall Street Journal</figcaption>
+			</figure>
+
+			<div intro='typewriter'>
+				<p>We see in our work that a well-designed interactive work can have <strong>ten times the effect</strong> of a well-written report.</p>
+				<p>We want to use this in our efforts to inform the public and different decision-making processes</p>
+
+				<p class='author'><a href='http://datadrivenjournalism.net/news_and_analysis/Introducing_Fact_Tank_An_Interview_with_Pew_Research_Centers_Alan_Murray'>datadrivenjournalism.net</a> &ndash; Alan Murray, president, Pew Research Center</p>
+			</div>
+		</blockquote>
+	</div>
+	{{/()}}
 </div>

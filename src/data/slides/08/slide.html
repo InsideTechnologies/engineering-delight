@@ -1,23 +1,42 @@
 <div class='header' intro='fade' outro='fade'>
-	<h1>Understanding</h1>
+	<h1>Information is beautiful</h1>
 </div>
 
-<div class='content'>
-	<div class='container'>
-		<div class='top' intro='fade' outro='fade'>
-			<p>The best visualisations are self-explanatory.</p>
-		</div>
+<!-- TODO - add some examples (the billion-dollar-o-gram?) -->
 
-		{{#( stage >= 1 )}}
-		<div class='middle' intro='fade' outro='fade'>
-			<div class='image contain' style='background-image: url(files/images/radar.gif);'></div>
-		</div>
-		{{/()}}
+<div class='content' intro='fade' outro='fade'>
+	<div class='columns-outer'>
+		<div class='columns-inner'>
+			{{#( stage >= 1 )}}
+			<div class='column2' intro='fly' outro='fade'>
+				{{#( stage === 1 )}}
+					<div class='image contain' outro='fade' style='background-image: url(files/images/information-is-beautiful.jpg);'></div>
+				{{/()}}
 
-		{{#( stage >= 2 )}}
-		<div class='bottom' intro='fade' outro='fade'>
-			<p>Prefer familiar chart types, <em>in general</em>.</p>
+				{{#( stage >= 2 )}}
+					<div class='image contain' intro='fade' style='background-image: url(http://mccandless1.s3.amazonaws.com/info_700_2.jpg);'></div>
+				{{/()}}
+			</div>
+			{{/()}}
+
+			{{#( stage >= 3 )}}
+			<div class='column2' intro='fade'>
+				<div class='centred'>
+					<blockquote intro='typewriter'>
+						<img src='https://si0.twimg.com/profile_images/83855034/me_avatar2.jpg' style='float: right; margin: 0 0 1em 1em; width: 90px; height: 107px; border: 1px solid #ddd;'>
+
+						<p class='small-copy'>I usually do some hand-drawn sketches. Then I move onto screen work, creating images by hand in Adobe Illustrator CS4. It’s an amazingly powerful drawing package.</p>
+
+						<p class='small-copy'>Data visualization wise, it can output a few basic graphs, but otherwise, it doesn’t render data. That means, yes, I have to hand position every data point on every single image I create. And, yup, I am that anal.</p>
+
+						<p class='author'>
+							<cite><a href='http://www.los-list.com/blog/bookworm-david-mccandless/'>Lo's List interview</a></cite>
+							&ndash; David McCandless
+						</p>
+					</blockquote>
+				</div>
+			</div>
+			{{/()}}
 		</div>
-		{{/()}}
 	</div>
 </div>

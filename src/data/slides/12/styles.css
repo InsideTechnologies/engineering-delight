@@ -19,12 +19,18 @@
 	height: 100%;
 }
 
-.visible {
-	opacity: 1;
+.caption {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	bottom: 1em;
+	text-align: center;
+}
 
-	-webkit-transition: opacity 0.2s;
-	-moz-transition: opacity 0.2s;
-	-ms-transition: opacity 0.2s;
-	-o-transition: opacity 0.2s;
-	transition: opacity 0.2s;
+.caption p {
+	background-color: rgba(0,0,0,0.8);
+	color: white;
+	padding: 0.2em 1em;
+	display: inline-block;
+	font-size: 2em;
 }

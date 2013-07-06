@@ -1,30 +1,53 @@
 <div class='header' intro='fade' outro='fade'>
-	<h1>The effect of emotion on learning</h1>
+	<h1>The nature of delight</h1>
 </div>
 
-<div class='content' intro='fade' outro='fade'>
-	<p>A large body of research indicates that <strong>emotion</strong> enhances our ability to <strong>absorb and retain information</strong>.</p>
-	
-	{{#( stage >= 1 )}}
-	<p intro='fade'>This is because</p>
+<div class='content' outro='fade'>
+	{{#( stage === 1 )}}
+		<div class='centred' intro='fade' outro='fade' style='width: 40%;'>
+			<blockquote intro='typewriter'>
+				<p>all our pleasurable emotions and delightful sensations are to be referred, for their primary origin, to the perception of life</p>
 
-	<div class='image-container' intro='fade'>
-		<img src='files/images/homer.jpg'>
-		<a href='http://www.oneposter.com/product/149622/cant-talk-eating-homer-simpson'>oneposter.com</a>
+				<p class='author'>
+					<cite><a href='http://openlibrary.org/books/OL25408214M/A_treatise_on_the_leading_causes_of_pleasure_and_delight_in_the_human_mind'>A treatise on the leading causes of pleasure and delight in the human mind</a></cite>
+					&ndash; Watkins 1841
+				</p>
+			</blockquote>
+		</div>
 	</div>
-
-	<ul>
-		<li intro='fade'>the more engaged we are, the easier it becomes to filter out distractions</li>
-
-		{{#( stage >= 2 )}}
-		<li intro='fade'>different physiological mechanisms come into play</li>
-		{{/()}}
-
-		{{#( stage >= 3 )}}
-		<li intro='fade'>we continue to think about enjoyable experiences after they've finished</li>
-		{{/()}}
-	</ul>
 	{{/()}}
 
+	{{#( stage >= 2 )}}
+	<div class='centred' style='width: 100%; height: 80%; padding: 0 2em 2em 2em;'>
+		<div class='columns-outer'>
+			<div class='columns-inner'>
+				<div intro='fade' class='column3 column-withheader'>
+					<div class='column3-header'>
+						<h3>beauty</h3>
+					</div>
+					<div class='image' style='background-image: url(files/images/venus.jpg);'></div>
+				</div>
+
+				{{#( stage >= 3 )}}
+				<div intro='fade' class='column3 column-withheader'>
+					<div class='column3-header'>
+						<h3>understanding</h3>
+					</div>
+					<div class='image' style='background-image: url(files/images/archimedes.jpg);'></div>
+				</div>
+				{{/()}}
+
+				{{#( stage >= 4 )}}
+				<div intro='fade' class='column3 column-withheader'>
+					<div class='column3-header'>
+						<h3>aliveness</h3>
+					</div>
+					<div class='image' style='background-image: url(files/images/asimo.jpg);'></div>
+				</div>
+				{{/()}}
+			</div>
+		</div>
+	</div>
+	{{/()}}
 
 </div>
